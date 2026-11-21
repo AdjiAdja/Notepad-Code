@@ -1,1 +1,57 @@
+/* Malude Notepad Ideas — dasar: token, tipografi, bar atas, bar status */
+:root {
+  --bg: #000; --kraft: #c9a06a; --kraft-d: #a8793f; --kraft-ink: #2b1a05;
+  --blue: #1d4dff; --blue-d: #1238c4; --paper: #dcdcd8; --paper-d: #bcbcb6; --ink: #161616;
+  --head: 'Archivo', 'Helvetica Neue', Arial, sans-serif; --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; --hand: 'Caveat', 'Segoe Print', cursive;
+}
+* { box-sizing: border-box; }
+html { color-scheme: dark; }
+body { margin: 0; min-height: 100dvh; display: grid; grid-template-rows: auto 1fr auto; background: #000; color: #eee; font: 14px/1.5 var(--head); -webkit-font-smoothing: antialiased; }
+body[data-bg='langit'] { background: #000 url('../../assets/media/hills.jpg') center / cover fixed; }
+body[data-bg='langit']::before, body[data-bg='shenzhen']::before { content: ''; position: fixed; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.25) 40%, rgba(0,0,0,.6)); z-index: -1; pointer-events: none; }
+#bgv { position: fixed; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid #ffe14d; outline-offset: 2px; }
+.skip { position: absolute; left: -999px; top: 0; background: #fff; color: #000; padding: 8px 12px; z-index: 99; }
+.skip:focus { left: 8px; top: 8px; }
+[hidden] { display: none !important; }
+.fatal { color: #ff8a8a; padding: 2rem; white-space: pre-wrap; }
+.empty, .dim, .hint { opacity: .7; font-size: 12px; }
+.err { color: #ff8a8a; }
+.ok { color: #9dffb0; }
 
+/* bar atas */
+#top { display: flex; align-items: center; gap: 12px; padding: 10px 16px; position: sticky; top: 0; z-index: 20; background: rgba(0,0,0,.88); backdrop-filter: blur(8px); border-bottom: 1px solid #1c1c1c; }
+.brand { display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; flex: none; }
+.brand .mk { height: 30px; width: auto; filter: invert(1); }
+.wm { display: grid; line-height: 1; }
+.wm b { font-weight: 900; letter-spacing: .14em; font-size: 15px; }
+.wm small { font-size: 9px; letter-spacing: .32em; opacity: .7; margin-top: 3px; }
+.pill { border: 1px solid #3a3a3a; background: #111; border-radius: 99px; padding: 6px 14px; font-size: 13px; max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pill:hover { border-color: #777; }
+.pill .k { font: 700 10px var(--mono); background: var(--blue); padding: 1px 6px; border-radius: 3px; }
+.search { flex: 1; max-width: 520px; display: flex; justify-content: space-between; align-items: center; gap: 10px; background: #0c0c0c; border: 1px solid #2c2c2c; border-radius: 6px; padding: 7px 12px; color: #999; text-align: left; }
+.search:hover { border-color: #666; color: #ccc; }
+kbd { font: 11px var(--mono); border: 1px solid #444; border-radius: 4px; padding: 1px 6px; color: #aaa; }
+.tb-r { margin-left: auto; display: flex; align-items: center; gap: 4px; }
+.ic { width: 34px; height: 34px; border: 1px solid transparent; background: transparent; border-radius: 6px; font-size: 18px; color: #ddd; }
+.ic:hover { background: #1a1a1a; border-color: #333; }
+.dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: #666; vertical-align: middle; }
+.dot.ok { background: #4cff7a; } .dot.sync { background: #ffd84d; animation: pulse 1s infinite; } .dot.err { background: #ff5c5c; }
+.sync { padding: 0 8px; }
+@keyframes pulse { 50% { opacity: .35; } }
+
+/* bar status */
+#status { position: sticky; bottom: 0; display: flex; flex-wrap: wrap; gap: 4px 18px; padding: 5px 16px; background: #000; border-top: 1px solid #1c1c1c; font: 11px var(--mono); color: #8a8a8a; z-index: 20; }
+#status .sp { flex: 1; min-width: 120px; color: #ccc; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* tombol umum (di atas lembar biru / badge) */
+.btn { font: 600 12px var(--mono); border: 1px solid rgba(255,255,255,.75); background: transparent; color: #fff; padding: 7px 13px; border-radius: 3px; letter-spacing: .02em; }
+.btn:hover:not(:disabled) { background: rgba(255,255,255,.16); }
+.btn:disabled { opacity: .45; cursor: default; }
+.btn.sm { padding: 4px 10px; font-size: 11px; }
+.btn.primary { background: #fff; color: var(--blue-d); border-color: #fff; }
+.btn.primary:hover:not(:disabled) { background: #eef1ff; }
+.btn.danger { border-color: #ff9a9a; color: #ffb4b4; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
