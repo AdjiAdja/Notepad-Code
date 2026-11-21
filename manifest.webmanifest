@@ -1,1 +1,14 @@
-{"name":"Notepad","short_name":"Notepad","start_url":"./","display":"standalone","background_color":"#b9d5f5","theme_color":"#b9d5f5","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any"}]}
+{
+  "name": "Malude Notepad Ideas",
+  "short_name": "Malude",
+  "description": "Notepad untuk developer dan tim",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "assets/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
